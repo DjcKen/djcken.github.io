@@ -273,7 +273,40 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>在接入某视频SDK的过程中，properties发生空指针错误，一开始的方向是以为properties错误或SDK代码错误。<br>‘java.lang.ExceptionInInitializerError<br>            at java.lang.Class.newInstanceImpl(Native Method)<br>            at java.lang.Class.newInstance(Class.java:1319)<br>            at android.app.ActivityThread.installProvider(ActivityThread.java:4807)<br>            at android.app.ActivityThread.installContentProviders(ActivityThread.java:4432)<br>            at android.app.ActivityThread.handleBindApplication(ActivityThread.java:4372)<br>            at android.app.ActivityThread.access$1300(ActivityThread.java:141)<br>            at android.app.ActivityThread$H.handleMessage(ActivityThread.java:1294)<br>            at android.os.Handler.dispatchMessage(Handler.java:99)<br>            at android.os.Looper.loop(Looper.java:137)<br>            at android.app.ActivityThread.main(ActivityThread.java:5041)<br>            at java.lang.reflect.Method.invokeNative(Native Method)<br>            at java.lang.reflect.Method.invoke(Method.java:511)<br>            at com.android.internal.os.ZygoteInit$MethodAndArgsCaller.run(ZygoteInit.java:793)<br>            at com.android.internal.os.ZygoteInit.main(ZygoteInit.java:560)<br>            at dalvik.system.NativeStart.main(Native Method)<br>     Caused by: java.lang.NullPointerException: in == null<br>            at java.util.Properties.load(Properties.java:246)<br>            at com.letv.datastatistics.db.StatisContentProvider.<clinit>(StatisContentProvider.java:24)<br>            at java.lang.Class.newInstanceImpl(Native Method)<br>            at java.lang.Class.newInstance(Class.java:1319)<br>            at android.app.ActivityThread.installProvider(ActivityThread.java:4807)<br>            at android.app.ActivityThread.installContentProviders(ActivityThread.java:4432)<br>            at android.app.ActivityThread.handleBindApplication(ActivityThread.java:4372)<br>            at android.app.ActivityThread.access$1300(ActivityThread.java:141)<br>            at android.app.ActivityThread$H.handleMessage(ActivityThread.java:1294)<br>            at android.os.Handler.dispatchMessage(Handler.java:99)<br>            at android.os.Looper.loop(Looper.java:137)<br>            at android.app.ActivityThread.main(ActivityThread.java:5041)<br>            at java.lang.reflect.Method.invokeNative(Native Method)<br>            at java.lang.reflect.Method.invoke(Method.java:511)<br>            at com.android.internal.os.ZygoteInit$MethodAndArgsCaller.run(ZygoteInit.java:793)<br>            at com.android.internal.os.ZygoteInit.main(ZygoteInit.java:560)<br>            at dalvik.system.NativeStart.main(Native Method) ‘</clinit></p>
+        <p>在接入某视频SDK的过程中，properties发生空指针错误，一开始的方向是以为properties错误或SDK代码错误。<br><code>java.lang.ExceptionInInitializerError  
+            at java.lang.Class.newInstanceImpl(Native Method)  
+            at java.lang.Class.newInstance(Class.java:1319)  
+            at android.app.ActivityThread.installProvider(ActivityThread.java:4807)  
+            at android.app.ActivityThread.installContentProviders(ActivityThread.java:4432)  
+            at android.app.ActivityThread.handleBindApplication(ActivityThread.java:4372)  
+            at android.app.ActivityThread.access$1300(ActivityThread.java:141)  
+            at android.app.ActivityThread$H.handleMessage(ActivityThread.java:1294)  
+            at android.os.Handler.dispatchMessage(Handler.java:99)  
+            at android.os.Looper.loop(Looper.java:137)  
+            at android.app.ActivityThread.main(ActivityThread.java:5041)  
+            at java.lang.reflect.Method.invokeNative(Native Method)  
+            at java.lang.reflect.Method.invoke(Method.java:511)  
+            at com.android.internal.os.ZygoteInit$MethodAndArgsCaller.run(ZygoteInit.java:793)  
+            at com.android.internal.os.ZygoteInit.main(ZygoteInit.java:560)  
+            at dalvik.system.NativeStart.main(Native Method)  
+     Caused by: java.lang.NullPointerException: in == null  
+            at java.util.Properties.load(Properties.java:246)  
+            at com.letv.datastatistics.db.StatisContentProvider.&lt;clinit&gt;(StatisContentProvider.java:24)  
+            at java.lang.Class.newInstanceImpl(Native Method)  
+            at java.lang.Class.newInstance(Class.java:1319)  
+            at android.app.ActivityThread.installProvider(ActivityThread.java:4807)  
+            at android.app.ActivityThread.installContentProviders(ActivityThread.java:4432)  
+            at android.app.ActivityThread.handleBindApplication(ActivityThread.java:4372)  
+            at android.app.ActivityThread.access$1300(ActivityThread.java:141)  
+            at android.app.ActivityThread$H.handleMessage(ActivityThread.java:1294)  
+            at android.os.Handler.dispatchMessage(Handler.java:99)  
+            at android.os.Looper.loop(Looper.java:137)  
+            at android.app.ActivityThread.main(ActivityThread.java:5041)  
+            at java.lang.reflect.Method.invokeNative(Native Method)  
+            at java.lang.reflect.Method.invoke(Method.java:511)  
+            at com.android.internal.os.ZygoteInit$MethodAndArgsCaller.run(ZygoteInit.java:793)  
+            at com.android.internal.os.ZygoteInit.main(ZygoteInit.java:560)  
+            at dalvik.system.NativeStart.main(Native Method)</code></p>
 <p>解决方案：把properties放在（或新建在）src文件夹下面。</p>
 
       
