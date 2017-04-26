@@ -6,14 +6,19 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>Djcken</title>
+  <title>Android 4.1/4.1.1 TextView.setText for Html 引发ArrayIndexOutOfBoundsException的问题 | Djcken</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="Djcken">
-<meta property="og:url" content="http://yoursite.com/index.html">
+  <meta name="description" content="这个问题是由于系统原因引发，目前发现在android4.1、4.1.1的系统版本上，测试机器Samsung galaxy note 2(模拟器)。 目前网上讨论的方案大多是直接捕捉异常重新设置setText(text.toString());代码如下：12345678910111213141516171819202122232425262728    protected void onMeasur">
+<meta name="keywords" content="android">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Android 4.1/4.1.1 TextView.setText for Html 引发ArrayIndexOutOfBoundsException的问题">
+<meta property="og:url" content="http://yoursite.com/2016/09/09/textview-settext-outofbounds/index.html">
 <meta property="og:site_name" content="Djcken">
+<meta property="og:description" content="这个问题是由于系统原因引发，目前发现在android4.1、4.1.1的系统版本上，测试机器Samsung galaxy note 2(模拟器)。 目前网上讨论的方案大多是直接捕捉异常重新设置setText(text.toString());代码如下：12345678910111213141516171819202122232425262728    protected void onMeasur">
+<meta property="og:updated_time" content="2017-04-26T07:30:26.261Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Djcken">
+<meta name="twitter:title" content="Android 4.1/4.1.1 TextView.setText for Html 引发ArrayIndexOutOfBoundsException的问题">
+<meta name="twitter:description" content="这个问题是由于系统原因引发，目前发现在android4.1、4.1.1的系统版本上，测试机器Samsung galaxy note 2(模拟器)。 目前网上讨论的方案大多是直接捕捉异常重新设置setText(text.toString());代码如下：12345678910111213141516171819202122232425262728    protected void onMeasur">
   
   
     <link rel="icon" href="/favicon.png">
@@ -125,142 +130,14 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-    <article id="post-gitlog" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+            <article id="post-textview-settext-outofbounds" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/04/26/gitlog/">Git命令笔记</a>
-    </h1>
-  
-
-        
-        <a href="/2017/04/26/gitlog/" class="archive-article-date">
-  	<time datetime="2017-04-26T03:59:56.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-04-26</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>版本</p>
-<p>git clone <url> //克隆远程版本库</p>
-<p>git init        //初始化本地版本库</p>
-        
-          <a class="article-more-a" href="/2017/04/26/gitlog/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">git</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2017/04/26/gitlog/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-
-
-
-
-  
-    <article id="post-commond-not-found" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/04/24/commond-not-found/">-bash-pod-command not found</a>
-    </h1>
-  
-
-        
-        <a href="/2017/04/24/commond-not-found/" class="archive-article-date">
-  	<time datetime="2017-04-24T02:55:58.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-04-24</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>JakedeMacBook-Pro:~ jake$ sudo gem install cocoapods</p>
-<p>Password:</p>
-<p>ERROR:While executing gem … (Errno::EPERM)</p>
-        
-          <a class="article-more-a" href="/2017/04/24/commond-not-found/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">ios</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2017/04/24/commond-not-found/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-
-
-
-
-  
-    <article id="post-textview-settext-outofbounds" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2016/09/09/textview-settext-outofbounds/">Android 4.1/4.1.1 TextView.setText for Html 引发ArrayIndexOutOfBoundsException的问题</a>
+    <h1 class="article-title" itemprop="name">
+      Android 4.1/4.1.1 TextView.setText for Html 引发ArrayIndexOutOfBoundsException的问题
     </h1>
   
 
@@ -305,144 +182,110 @@
       
 
       
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2016/09/09/textview-settext-outofbounds/">展开全文 >></a>
-        </p>
-      
 
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
+        </div>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="http://s.jiathis.com/qrcode.php?url=http://yoursite.com/2016/09/09/textview-settext-outofbounds/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
       
       <div class="clearfix"></div>
     </div>
   </div>
 </article>
 
-
-
-
-
   
-    <article id="post-properitesnullpoint" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
+<nav id="article-nav">
   
-    <h1 itemprop="name">
-      <a class="article-title" href="/2015/05/20/properitesnullpoint/">properties导致空指针的问题</a>
-    </h1>
+    <a href="/2015/05/20/properitesnullpoint/" id="article-nav-newer" class="article-nav-link-wrap">
+      <i class="icon-circle-left"></i>
+      <div class="article-nav-title">
+        
+          properties导致空指针的问题
+        
+      </div>
+    </a>
   
-
-        
-        <a href="/2015/05/20/properitesnullpoint/" class="archive-article-date">
-  	<time datetime="2015-05-20T08:01:10.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2015-05-20</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>在接入某视频SDK的过程中，properties发生空指针错误，一开始的方向是以为properties错误或SDK代码错误。<br>
-        
-          <a class="article-more-a" href="/2015/05/20/properitesnullpoint/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">android</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2015/05/20/properitesnullpoint/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
+  
+    <a href="/2017/04/24/commond-not-found/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">-bash-pod-command not found</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
 
 
 
 
 
   
-    <article id="post-webviewpicture" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
   
-    <h1 itemprop="name">
-      <a class="article-title" href="/2014/12/12/webviewpicture/">关于Android使用TextView+ImageSpan同一行文字图片居中的问题</a>
-    </h1>
   
 
-        
-        <a href="/2014/12/12/webviewpicture/" class="archive-article-date">
-  	<time datetime="2014-12-12T12:21:48.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2014-12-12</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>项目开发中遇到了这样一个需求，标签（图片）和文字，标签显示在标题的开头，自然而然想到了用TextView+ImageSpan的方式来弄，开始没有思路，网上搜索一下基本上都有说到，但是都没有解决一个问题，就是居中。怎么设置都设置不了！后来找到一篇文章里面介绍了ImageSpan的getSize()方法设置了展示位置！下面给出自定义修改的ImageSpan，至于怎么用ImageSpan就不多说了<br>
-        
-          <a class="article-more-a" href="/2014/12/12/webviewpicture/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">android</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2014/12/12/webviewpicture/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-
-
-
+  
 
   
+    <section id="comments">
+      <div id="disqus_thread"></div>
+        <script type="text/javascript">
+        /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+        var disqus_shortname = 'djcken'; // required: replace example with your forum shortname
+
+        /* * * DON'T EDIT BELOW THIS LINE * * */
+        (function() {
+          var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+          dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+          (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+        })();
+      </script>
+      <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+    </section>
   
 
 
@@ -465,8 +308,8 @@
     <script>
 	var yiliaConfig = {
 		mathjax: false,
-		isHome: true,
-		isPost: false,
+		isHome: false,
+		isPost: true,
 		isArchive: false,
 		isTag: false,
 		isCategory: false,
