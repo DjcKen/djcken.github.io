@@ -6,19 +6,19 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>Android 4.1/4.1.1 TextView.setText for Html 引发ArrayIndexOutOfBoundsException的问题 | Djcken</title>
+  <title>关于sony等机型拍照后返回重载了Activity的问题 | Djcken</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="这个问题是由于系统原因引发，目前发现在android4.1、4.1.1的系统版本上，测试机器Samsung galaxy note 2(模拟器)。">
+  <meta name="description" content="前段时间在处理一个Android拍照很纠结的问题，拍照回来后，重新加载了Activity生命周期，一开始也没往这个方面想，以为是哪里造成了崩溃！记录一下，免得忘记！">
 <meta name="keywords" content="android">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Android 4.1/4.1.1 TextView.setText for Html 引发ArrayIndexOutOfBoundsException的问题">
-<meta property="og:url" content="http://yoursite.com/2016/09/09/textview-settext-outofbounds/index.html">
+<meta property="og:title" content="关于sony等机型拍照后返回重载了Activity的问题">
+<meta property="og:url" content="http://yoursite.com/2014/12/01/reload-activity/index.html">
 <meta property="og:site_name" content="Djcken">
-<meta property="og:description" content="这个问题是由于系统原因引发，目前发现在android4.1、4.1.1的系统版本上，测试机器Samsung galaxy note 2(模拟器)。">
-<meta property="og:updated_time" content="2017-04-26T07:32:14.139Z">
+<meta property="og:description" content="前段时间在处理一个Android拍照很纠结的问题，拍照回来后，重新加载了Activity生命周期，一开始也没往这个方面想，以为是哪里造成了崩溃！记录一下，免得忘记！">
+<meta property="og:updated_time" content="2017-04-26T07:35:43.118Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Android 4.1/4.1.1 TextView.setText for Html 引发ArrayIndexOutOfBoundsException的问题">
-<meta name="twitter:description" content="这个问题是由于系统原因引发，目前发现在android4.1、4.1.1的系统版本上，测试机器Samsung galaxy note 2(模拟器)。">
+<meta name="twitter:title" content="关于sony等机型拍照后返回重载了Activity的问题">
+<meta name="twitter:description" content="前段时间在处理一个Android拍照很纠结的问题，拍照回来后，重新加载了Activity生命周期，一开始也没往这个方面想，以为是哪里造成了崩溃！记录一下，免得忘记！">
   
   
     <link rel="icon" href="/favicon.png">
@@ -130,35 +130,27 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-textview-settext-outofbounds" class="article article-type-post " itemscope itemprop="blogPost">
+            <article id="post-reload-activity" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 class="article-title" itemprop="name">
-      Android 4.1/4.1.1 TextView.setText for Html 引发ArrayIndexOutOfBoundsException的问题
+      关于sony等机型拍照后返回重载了Activity的问题
     </h1>
   
 
         
-        <a href="/2016/09/09/textview-settext-outofbounds/" class="archive-article-date">
-  	<time datetime="2016-09-09T08:50:15.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2016-09-09</time>
+        <a href="/2014/12/01/reload-activity/" class="archive-article-date">
+  	<time datetime="2014-12-01T02:01:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2014-12-01</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>这个问题是由于系统原因引发，目前发现在android4.1、4.1.1的系统版本上，测试机器Samsung galaxy note 2(模拟器)。<br><a id="more"></a><br>目前网上讨论的方案大多是直接捕捉异常重新设置setText(text.toString());<br>代码如下：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div></pre></td><td class="code"><pre><div class="line">    protected void onMeasure(int widthMeasureSpec, int heightMeasureSpec) &#123;</div><div class="line">        try &#123;</div><div class="line">            super.onMeasure(widthMeasureSpec, heightMeasureSpec);</div><div class="line">        &#125; catch (IndexOutOfBoundsException e) &#123;</div><div class="line">            setText(getText().toString());</div><div class="line">            super.onMeasure(widthMeasureSpec, heightMeasureSpec);</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    @Override</div><div class="line">    public void setGravity(int gravity) &#123;</div><div class="line">        try &#123;</div><div class="line">            super.setGravity(gravity);</div><div class="line">        &#125; catch (IndexOutOfBoundsException e) &#123;</div><div class="line">            setText(getText().toString());</div><div class="line">            super.setGravity(gravity);</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">@Override</div><div class="line">public void setText(CharSequence text, BufferType type) &#123;</div><div class="line">        try &#123;</div><div class="line">            super.setText(text, type);</div><div class="line">        &#125; catch (IndexOutOfBoundsException e) &#123;</div><div class="line">            setText(text.toString());</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">    &#125;</div></pre></td></tr></table></figure></p>
-<p>这种方式可以解决崩溃的问题，但是imagespan却展示不出来。</p>
-<p>第二种方案：删除引发问题的span。<br>代码如下：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div></pre></td><td class="code"><pre><div class="line">public void setText(CharSequence text, BufferType type) &#123;</div><div class="line">        try &#123;</div><div class="line">            super.setText(text, type);</div><div class="line">        &#125; catch (IndexOutOfBoundsException e) &#123;</div><div class="line">            if (text instanceof Spanned) &#123;</div><div class="line">                Spanned spanned = (Spanned) text;</div><div class="line">                SpannableStringBuilder builder = new SpannableStringBuilder(spanned);</div><div class="line">                MetricAffectingSpan[] spans = spanned.getSpans(0, spanned.length(), MetricAffectingSpan.class);</div><div class="line">                if (spans != null &amp;&amp; spans.length &gt; 0) &#123;</div><div class="line">                    for (MetricAffectingSpan span : spans) &#123;</div><div class="line">                        if (span instanceof ImageSpan) &#123;</div><div class="line">                            //do nothing</div><div class="line">                        &#125; else &#123;</div><div class="line">                            builder.removeSpan(span);</div><div class="line">                        &#125;</div><div class="line">                    &#125;</div><div class="line">                &#125;</div><div class="line">                super.setText(builder, type);</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">    &#125;</div></pre></td></tr></table></figure>
-<p>这种方案可以防止崩溃，而且可以使imagespan继续展示，只是删除了其他span。</p>
-<p>第三种方案：在引发问题span的前后加入空格符。<br>代码如下：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div></pre></td><td class="code"><pre><div class="line">public void setText(CharSequence text, BufferType type) &#123;</div><div class="line">        try &#123;</div><div class="line">            super.setText(text, type);</div><div class="line">        &#125; catch (IndexOutOfBoundsException e) &#123;</div><div class="line">            if (text instanceof Spanned) &#123;</div><div class="line">                Spanned spanned = (Spanned) text;</div><div class="line">                SpannableStringBuilder builder = new SpannableStringBuilder(spanned);</div><div class="line">                MetricAffectingSpan[] spans = spanned.getSpans(0, spanned.length(), MetricAffectingSpan.class);</div><div class="line">                if (spans != null &amp;&amp; spans.length &gt; 0) &#123;</div><div class="line">                    for (MetricAffectingSpan span : spans) &#123;</div><div class="line">                        int spanStart = builder.getSpanStart(span);</div><div class="line">                        if (isNotSpace(builder, spanStart - 1)) &#123;</div><div class="line">                            builder.insert(spanStart, &quot; &quot;);</div><div class="line">                        &#125;</div><div class="line">                        int spanEnd = builder.getSpanEnd(span);</div><div class="line">                        if (isNotSpace(builder, spanEnd)) &#123;</div><div class="line">                            builder.insert(spanEnd, &quot; &quot;);</div><div class="line">                        &#125;</div><div class="line">                    &#125;</div><div class="line">                &#125;</div><div class="line">                super.setText(builder, type);</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">private boolean isNotSpace(CharSequence text, int where) &#123;</div><div class="line">        return where &lt; 0 || where &gt;= text.length() || text.charAt(where) != &apos; &apos;;</div><div class="line">    &#125;</div></pre></td></tr></table></figure></p>
-<p>这种方案相对于1，2相对完美，并不会去除span，内容风格可以保留。</p>
-<p>在此感谢国外大神提供思路（issues 35466的第25楼）：<br><a href="https://code.google.com/p/android/issues/detail?id=35466" target="_blank" rel="external">https://code.google.com/p/android/issues/detail?id=35466</a></p>
-<p>不能完全解决问题的同学可以参考该issues 上的其他解决方案。</p>
+        <p>前段时间在处理一个Android拍照很纠结的问题，拍照回来后，重新加载了Activity生命周期，一开始也没往这个方面想，以为是哪里造成了崩溃！<br>记录一下，免得忘记！<br><a id="more"></a><br>原因：拍照横屏竖屏切换生命周期！<br>配置：AndroidManifest.xml对应的activity 配置android:configChanges=”orientation|keyboard|screenSize”<br>重写：在对应的activity重写 onConfigurationChanged方法</p>
 
       
 
@@ -228,7 +220,7 @@
     <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="http://s.jiathis.com/qrcode.php?url=http://yoursite.com/2016/09/09/textview-settext-outofbounds/" alt="微信分享二维码">
+      <img src="http://s.jiathis.com/qrcode.php?url=http://yoursite.com/2014/12/01/reload-activity/" alt="微信分享二维码">
     </div>
 </div>
 
@@ -242,18 +234,9 @@
   
 <nav id="article-nav">
   
-    <a href="/2015/05/20/properitesnullpoint/" id="article-nav-newer" class="article-nav-link-wrap">
-      <i class="icon-circle-left"></i>
-      <div class="article-nav-title">
-        
-          properties导致空指针的问题
-        
-      </div>
-    </a>
   
-  
-    <a href="/2017/04/24/commond-not-found/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">-bash-pod-command not found</div>
+    <a href="/2014/12/12/webviewpicture/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">关于Android使用TextView+ImageSpan同一行文字图片居中的问题</div>
       <i class="icon-circle-right"></i>
     </a>
   

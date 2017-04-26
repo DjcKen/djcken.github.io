@@ -273,17 +273,10 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>这个问题是由于系统原因引发，目前发现在android4.1、4.1.1的系统版本上，测试机器Samsung galaxy note 2(模拟器)。</p>
-<p>目前网上讨论的方案大多是直接捕捉异常重新设置setText(text.toString());<br>代码如下：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div></pre></td><td class="code"><pre><div class="line">    protected void onMeasure(int widthMeasureSpec, int heightMeasureSpec) &#123;</div><div class="line">        try &#123;</div><div class="line">            super.onMeasure(widthMeasureSpec, heightMeasureSpec);</div><div class="line">        &#125; catch (IndexOutOfBoundsException e) &#123;</div><div class="line">            setText(getText().toString());</div><div class="line">            super.onMeasure(widthMeasureSpec, heightMeasureSpec);</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    @Override</div><div class="line">    public void setGravity(int gravity) &#123;</div><div class="line">        try &#123;</div><div class="line">            super.setGravity(gravity);</div><div class="line">        &#125; catch (IndexOutOfBoundsException e) &#123;</div><div class="line">            setText(getText().toString());</div><div class="line">            super.setGravity(gravity);</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">@Override</div><div class="line">public void setText(CharSequence text, BufferType type) &#123;</div><div class="line">        try &#123;</div><div class="line">            super.setText(text, type);</div><div class="line">        &#125; catch (IndexOutOfBoundsException e) &#123;</div><div class="line">            setText(text.toString());</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">    &#125;</div></pre></td></tr></table></figure></p>
-<p>这种方式可以解决崩溃的问题，但是imagespan却展示不出来。</p>
-<p>第二种方案：删除引发问题的span。<br>代码如下：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div></pre></td><td class="code"><pre><div class="line">public void setText(CharSequence text, BufferType type) &#123;</div><div class="line">        try &#123;</div><div class="line">            super.setText(text, type);</div><div class="line">        &#125; catch (IndexOutOfBoundsException e) &#123;</div><div class="line">            if (text instanceof Spanned) &#123;</div><div class="line">                Spanned spanned = (Spanned) text;</div><div class="line">                SpannableStringBuilder builder = new SpannableStringBuilder(spanned);</div><div class="line">                MetricAffectingSpan[] spans = spanned.getSpans(0, spanned.length(), MetricAffectingSpan.class);</div><div class="line">                if (spans != null &amp;&amp; spans.length &gt; 0) &#123;</div><div class="line">                    for (MetricAffectingSpan span : spans) &#123;</div><div class="line">                        if (span instanceof ImageSpan) &#123;</div><div class="line">                            //do nothing</div><div class="line">                        &#125; else &#123;</div><div class="line">                            builder.removeSpan(span);</div><div class="line">                        &#125;</div><div class="line">                    &#125;</div><div class="line">                &#125;</div><div class="line">                super.setText(builder, type);</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">    &#125;</div></pre></td></tr></table></figure>
-<p>这种方案可以防止崩溃，而且可以使imagespan继续展示，只是删除了其他span。</p>
-<p>第三种方案：在引发问题span的前后加入空格符。<br>代码如下：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div></pre></td><td class="code"><pre><div class="line">public void setText(CharSequence text, BufferType type) &#123;</div><div class="line">        try &#123;</div><div class="line">            super.setText(text, type);</div><div class="line">        &#125; catch (IndexOutOfBoundsException e) &#123;</div><div class="line">            if (text instanceof Spanned) &#123;</div><div class="line">                Spanned spanned = (Spanned) text;</div><div class="line">                SpannableStringBuilder builder = new SpannableStringBuilder(spanned);</div><div class="line">                MetricAffectingSpan[] spans = spanned.getSpans(0, spanned.length(), MetricAffectingSpan.class);</div><div class="line">                if (spans != null &amp;&amp; spans.length &gt; 0) &#123;</div><div class="line">                    for (MetricAffectingSpan span : spans) &#123;</div><div class="line">                        int spanStart = builder.getSpanStart(span);</div><div class="line">                        if (isNotSpace(builder, spanStart - 1)) &#123;</div><div class="line">                            builder.insert(spanStart, &quot; &quot;);</div><div class="line">                        &#125;</div><div class="line">                        int spanEnd = builder.getSpanEnd(span);</div><div class="line">                        if (isNotSpace(builder, spanEnd)) &#123;</div><div class="line">                            builder.insert(spanEnd, &quot; &quot;);</div><div class="line">                        &#125;</div><div class="line">                    &#125;</div><div class="line">                &#125;</div><div class="line">                super.setText(builder, type);</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">private boolean isNotSpace(CharSequence text, int where) &#123;</div><div class="line">        return where &lt; 0 || where &gt;= text.length() || text.charAt(where) != &apos; &apos;;</div><div class="line">    &#125;</div></pre></td></tr></table></figure></p>
-<p>这种方案相对于1，2相对完美，并不会去除span，内容风格可以保留。</p>
-<p>在此感谢国外大神提供思路（issues 35466的第25楼）：<br><a href="https://code.google.com/p/android/issues/detail?id=35466" target="_blank" rel="external">https://code.google.com/p/android/issues/detail?id=35466</a></p>
-<p>不能完全解决问题的同学可以参考该issues 上的其他解决方案。</p>
-
+        <p>这个问题是由于系统原因引发，目前发现在android4.1、4.1.1的系统版本上，测试机器Samsung galaxy note 2(模拟器)。<br>
+        
+          <a class="article-more-a" href="/2016/09/09/textview-settext-outofbounds/#more">more >></a>
+        
       
 
       
@@ -429,6 +422,67 @@
       
         <p class="article-more-link">
           <a class="article-more-a" href="/2014/12/12/webviewpicture/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+
+
+
+
+  
+    <article id="post-reload-activity" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2014/12/01/reload-activity/">关于sony等机型拍照后返回重载了Activity的问题</a>
+    </h1>
+  
+
+        
+        <a href="/2014/12/01/reload-activity/" class="archive-article-date">
+  	<time datetime="2014-12-01T02:01:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2014-12-01</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>前段时间在处理一个Android拍照很纠结的问题，拍照回来后，重新加载了Activity生命周期，一开始也没往这个方面想，以为是哪里造成了崩溃！<br>记录一下，免得忘记！<br>
+        
+          <a class="article-more-a" href="/2014/12/01/reload-activity/#more">more >></a>
+        
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">android</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2014/12/01/reload-activity/">展开全文 >></a>
         </p>
       
 
