@@ -253,6 +253,66 @@
 
 
   
+    <article id="post-properitesnullpoint" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2015/05/20/properitesnullpoint/">properties导致空指针的问题</a>
+    </h1>
+  
+
+        
+        <a href="/2015/05/20/properitesnullpoint/" class="archive-article-date">
+  	<time datetime="2015-05-20T08:01:10.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2015-05-20</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>在接入某视频SDK的过程中，properties发生空指针错误，一开始的方向是以为properties错误或SDK代码错误。<br>‘java.lang.ExceptionInInitializerError<br>            at java.lang.Class.newInstanceImpl(Native Method)<br>            at java.lang.Class.newInstance(Class.java:1319)<br>            at android.app.ActivityThread.installProvider(ActivityThread.java:4807)<br>            at android.app.ActivityThread.installContentProviders(ActivityThread.java:4432)<br>            at android.app.ActivityThread.handleBindApplication(ActivityThread.java:4372)<br>            at android.app.ActivityThread.access$1300(ActivityThread.java:141)<br>            at android.app.ActivityThread$H.handleMessage(ActivityThread.java:1294)<br>            at android.os.Handler.dispatchMessage(Handler.java:99)<br>            at android.os.Looper.loop(Looper.java:137)<br>            at android.app.ActivityThread.main(ActivityThread.java:5041)<br>            at java.lang.reflect.Method.invokeNative(Native Method)<br>            at java.lang.reflect.Method.invoke(Method.java:511)<br>            at com.android.internal.os.ZygoteInit$MethodAndArgsCaller.run(ZygoteInit.java:793)<br>            at com.android.internal.os.ZygoteInit.main(ZygoteInit.java:560)<br>            at dalvik.system.NativeStart.main(Native Method)<br>     Caused by: java.lang.NullPointerException: in == null<br>            at java.util.Properties.load(Properties.java:246)<br>            at com.letv.datastatistics.db.StatisContentProvider.<clinit>(StatisContentProvider.java:24)<br>            at java.lang.Class.newInstanceImpl(Native Method)<br>            at java.lang.Class.newInstance(Class.java:1319)<br>            at android.app.ActivityThread.installProvider(ActivityThread.java:4807)<br>            at android.app.ActivityThread.installContentProviders(ActivityThread.java:4432)<br>            at android.app.ActivityThread.handleBindApplication(ActivityThread.java:4372)<br>            at android.app.ActivityThread.access$1300(ActivityThread.java:141)<br>            at android.app.ActivityThread$H.handleMessage(ActivityThread.java:1294)<br>            at android.os.Handler.dispatchMessage(Handler.java:99)<br>            at android.os.Looper.loop(Looper.java:137)<br>            at android.app.ActivityThread.main(ActivityThread.java:5041)<br>            at java.lang.reflect.Method.invokeNative(Native Method)<br>            at java.lang.reflect.Method.invoke(Method.java:511)<br>            at com.android.internal.os.ZygoteInit$MethodAndArgsCaller.run(ZygoteInit.java:793)<br>            at com.android.internal.os.ZygoteInit.main(ZygoteInit.java:560)<br>            at dalvik.system.NativeStart.main(Native Method) ‘</clinit></p>
+<p>解决方案：把properties放在（或新建在）src文件夹下面。</p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">android</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2015/05/20/properitesnullpoint/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+
+
+
+
+  
     <article id="post-webviewpicture" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
