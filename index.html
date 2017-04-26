@@ -127,6 +127,91 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-gitlog" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/04/26/gitlog/">Git命令笔记</a>
+    </h1>
+  
+
+        
+        <a href="/2017/04/26/gitlog/" class="archive-article-date">
+  	<time datetime="2017-04-26T03:59:56.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-04-26</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>版本</p>
+<p>git clone <url> //克隆远程版本库</url></p>
+<p>git init        //初始化本地版本库</p>
+<p>git status     //查看状态</p>
+<p>git add . //所有修改文件增加到版本库</p>
+<p>git commit -m “注解” //提交所有add文件到当前分支</p>
+<p>git checkout 分支名  //切换到分支</p>
+<p>git branch  //查看本地分支</p>
+<p>git branch -a //查看所有分支</p>
+<p>git push origin –delete <branchname> //删除远程分支</branchname></p>
+<p>git push origin :<branchname>//删除远程分支的另一种语法（先删除本地分支，再推送空分支）</branchname></p>
+<p>git pull  //拉取所有代码</p>
+<p>git pull 分支名  //拉取分支代码</p>
+<p>git stash //暂存修改</p>
+<p>git stash pop //恢复暂存</p>
+<p>git reset –hard &lt;头部哈希值&gt;//回退到某个提交</p>
+<p>git cherry-pick <commit id="">//从某个分支的commit里面合并到当前分支</commit></p>
+<p>标签</p>
+<p>git tag //分支列表</p>
+<p>git tag -a 标签名 -m “注解”   //创建tag</p>
+<p>git tag -a 标签名 9e721cb -m “注解” //给某次提交打tag</p>
+<p>git tag -d 标签名   //删除本地分支</p>
+<p>git push origin 便签名 //推送到远程服务器</p>
+<p>git push origin –delete tag <tagname>//删除远程标签</tagname></p>
+<p>git push origin :refs/tags/标签名  //删除远程标签的另一种语法 （先删除本地标签，再推送空标签）</p>
+<p>git checkout -b branch tag     // 例如 git checkout -b tset v0.1.0 切换到分支（创建一个基于指定tag的分支）</p>
+<p>git ls-remote –tags <repository>  //查看远程tag。例如：git ls-remote –tags git://github.com/git/git.git</repository></p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">git</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2017/04/26/gitlog/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+
+
+
+
+  
     <article id="post-commond-not-found" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -265,6 +350,10 @@
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">ios</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">git</a>
               </li>
             
             <div class="clearfix"></div>
