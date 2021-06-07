@@ -1,11 +1,15 @@
 {
-    "applinks": {
-        "apps": [],
-        "details": [
-            {
-                "appID": "CX2KUT9XL3.com.miaoyue.doctor",
-                "paths": [ "/appLink/*","/imdtapp/wechat/*" ]
-            }
-        ]
-    }
+  "applinks": {
+    "apps": [],
+    "details": [
+      {
+        "appID": "NH8YSVS32D.com.hytx.everythingdoctor",
+        "paths": [ "/appdoctor/*" ]
+      },
+	{
+        "appID": "NH8YSVS32D.com.hytx.everythingusers",
+        "paths": [ "/appusers/*" ]
+      }
+    ]
+  }
 }
