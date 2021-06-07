@@ -3,8 +3,8 @@
     "apps": [],
     "details": [
       {
-        "appID": "NH8YSVS32D.com.hytx.everythingdoctor",
-        "paths": [ "/appdoctor/*" ]
+        "appID": "NH8YSVS32D.com.hytx.everythingusers",
+        "paths": [ "/appusers/*" ]
       }
     ]
   }
