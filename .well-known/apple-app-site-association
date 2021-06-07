@@ -3,7 +3,7 @@
         "apps": [],
         "details": [
             {
-                "appID": "CX2KUT9XL3.com.miaoyue.doctor",
+                "appID": "NH8YSVS32D.com.hytx.everythingdoctor",
                 "paths": [ "/appLink/*","/imdtapp/wechat/*" ]
             }
         ]
